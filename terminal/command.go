@@ -14,7 +14,7 @@ import (
 
 	"github.com/charmbracelet/gum/ansi"
 	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/internal/filter"
+	"github.com/mikelo/gum/terminal"
 )
 
 // Run provides a shell script interface for filtering through options, powered
@@ -46,7 +46,7 @@ func (o Options) Run() error {
 		}
 		// sort strings by highest frequency
 		o.Options = strings.Split(strings.TrimSuffix(string(history), "\n"), "\n")
-		o.Options = filter.SortByFrequency(o.Options)
+		o.Options = terminal.SortByFrequency(o.Options)
 	}
 	if len(o.Options) == 0 {
 		return errors.New("no options provided, see `gum filter --help`")

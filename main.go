@@ -71,7 +71,7 @@ func main() {
 	// 	},
 	// )
 
-	if err := gum.Filter.Run(); err != nil {
+	if err := gum.Terminal.Run(); err != nil {
 		// if err := ctx.Run(); err != nil {
 		if errors.Is(err, exit.ErrAborted) {
 			os.Exit(exit.StatusAborted)

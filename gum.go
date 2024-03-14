@@ -2,12 +2,12 @@ package main
 
 import (
 	"github.com/alecthomas/kong"
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/charmbracelet/gum/choose"
 	"github.com/charmbracelet/gum/completion"
 	"github.com/charmbracelet/gum/confirm"
 	"github.com/charmbracelet/gum/file"
-	"github.com/charmbracelet/gum/filter"
 	"github.com/charmbracelet/gum/format"
 	"github.com/charmbracelet/gum/input"
 	"github.com/charmbracelet/gum/join"
@@ -18,6 +18,7 @@ import (
 	"github.com/charmbracelet/gum/style"
 	"github.com/charmbracelet/gum/table"
 	"github.com/charmbracelet/gum/write"
+	"github.com/mikelo/gum/terminal"
 	// import local filter folder
 )
 
@@ -85,6 +86,8 @@ type Gum struct {
 	// $ cat flavors.text | gum filter
 	//
 	Filter filter.Options `cmd:"" help:"Filter items from a list"`
+
+	Terminal terminal.Options `cmd:"" help:"Open a terminal window"`
 
 	// Format allows you to render styled text from `markdown`, `code`,
 	// `template` strings, or embedded `emoji` strings.
