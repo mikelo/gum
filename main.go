@@ -6,7 +6,6 @@ import (
 	"os"
 	"runtime/debug"
 
-	"github.com/alecthomas/kong"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/muesli/termenv"
 
@@ -43,35 +42,37 @@ func main() {
 	}
 
 	gum := &Gum{}
-	ctx := kong.Parse(
-		gum,
-		kong.Description(fmt.Sprintf("A tool for %s shell scripts.", bubbleGumPink.Render("glamorous"))),
-		kong.UsageOnError(),
-		kong.ConfigureHelp(kong.HelpOptions{
-			Compact:             true,
-			Summary:             false,
-			NoExpandSubcommands: true,
-		}),
-		kong.Vars{
-			"version":                 version,
-			"defaultHeight":           "0",
-			"defaultWidth":            "0",
-			"defaultAlign":            "left",
-			"defaultBorder":           "none",
-			"defaultBorderForeground": "",
-			"defaultBorderBackground": "",
-			"defaultBackground":       "",
-			"defaultForeground":       "",
-			"defaultMargin":           "0 0",
-			"defaultPadding":          "0 0",
-			"defaultUnderline":        "false",
-			"defaultBold":             "false",
-			"defaultFaint":            "false",
-			"defaultItalic":           "false",
-			"defaultStrikethrough":    "false",
-		},
-	)
-	if err := ctx.Run(); err != nil {
+	// ctx := kong.Parse(
+	// 	gum,
+	// 	kong.Description(fmt.Sprintf("A tool for %s shell scripts.", bubbleGumPink.Render("glamorous"))),
+	// 	kong.UsageOnError(),
+	// 	kong.ConfigureHelp(kong.HelpOptions{
+	// 		Compact:             true,
+	// 		Summary:             false,
+	// 		NoExpandSubcommands: true,
+	// 	}),
+	// 	kong.Vars{
+	// 		"version":                 version,
+	// 		"defaultHeight":           "0",
+	// 		"defaultWidth":            "0",
+	// 		"defaultAlign":            "left",
+	// 		"defaultBorder":           "none",
+	// 		"defaultBorderForeground": "",
+	// 		"defaultBorderBackground": "",
+	// 		"defaultBackground":       "",
+	// 		"defaultForeground":       "",
+	// 		"defaultMargin":           "0 0",
+	// 		"defaultPadding":          "0 0",
+	// 		"defaultUnderline":        "false",
+	// 		"defaultBold":             "false",
+	// 		"defaultFaint":            "false",
+	// 		"defaultItalic":           "false",
+	// 		"defaultStrikethrough":    "false",
+	// 	},
+	// )
+
+	if err := gum.Filter.Run(); err != nil {
+		// if err := ctx.Run(); err != nil {
 		if errors.Is(err, exit.ErrAborted) {
 			os.Exit(exit.StatusAborted)
 		}

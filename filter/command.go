@@ -14,8 +14,7 @@ import (
 
 	"github.com/charmbracelet/gum/ansi"
 	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/internal/files"
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/charmbracelet/gum/internal/filter"
 )
 
 // Run provides a shell script interface for filtering through options, powered
@@ -33,13 +32,22 @@ func (o Options) Run() error {
 	v := viewport.New(o.Width, o.Height)
 
 	if len(o.Options) == 0 {
-		if input, _ := stdin.Read(); input != "" {
-			o.Options = strings.Split(strings.TrimSuffix(input, "\n"), "\n")
-		} else {
-			o.Options = files.List()
-		}
-	}
+		// if $HIST_FILE exists load contents to string
 
+		// if $HISTFILE file exists load contents to string variable
+		// if input, _ := os.ReadFile("/home/" + os.Getenv("USER") + "/.bash_history"); input != nil {
+		histfile := os.Getenv("HISTFILE")
+		if histfile == "" {
+			histfile = os.Getenv("HOME") + "/.bash_history"
+		}
+		history, err := os.ReadFile(histfile)
+		if err != nil {
+			return err
+		}
+		// sort strings by highest frequency
+		o.Options = strings.Split(strings.TrimSuffix(string(history), "\n"), "\n")
+		o.Options = filter.SortByFrequency(o.Options)
+	}
 	if len(o.Options) == 0 {
 		return errors.New("no options provided, see `gum filter --help`")
 	}
