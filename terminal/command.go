@@ -13,7 +13,7 @@ import (
 	"github.com/sahilm/fuzzy"
 
 	"github.com/charmbracelet/gum/ansi"
-	"github.com/charmbracelet/gum/internal/exit"
+	"github.com/mikelo/gum/internal/exit"
 	"github.com/mikelo/gum/terminal"
 )
 
