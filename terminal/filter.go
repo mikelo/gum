@@ -8,7 +8,7 @@
 // I.e. let's pick from a list of gum flavors:
 //
 // $ cat flavors.text | gum filter
-package filter
+package terminal
 
 import (
 	"strings"

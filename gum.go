@@ -8,6 +8,7 @@ import (
 	"github.com/charmbracelet/gum/completion"
 	"github.com/charmbracelet/gum/confirm"
 	"github.com/charmbracelet/gum/file"
+	"github.com/charmbracelet/gum/filter"
 	"github.com/charmbracelet/gum/format"
 	"github.com/charmbracelet/gum/input"
 	"github.com/charmbracelet/gum/join"
@@ -19,7 +20,6 @@ import (
 	"github.com/charmbracelet/gum/table"
 	"github.com/charmbracelet/gum/write"
 	"github.com/mikelo/gum/terminal"
-	// import local filter folder
 )
 
 // Gum is the command-line interface for Gum.
