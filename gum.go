@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/alecthomas/kong"
-	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/charmbracelet/gum/choose"
 	"github.com/charmbracelet/gum/completion"
