@@ -20,9 +20,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/charmbracelet/gum/internal/exit"
 	"github.com/charmbracelet/gum/timeout"
 	"github.com/mattn/go-isatty"
+	"github.com/mikelo/gum/internal/exit"
 
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"

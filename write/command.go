@@ -9,8 +9,8 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	"github.com/charmbracelet/gum/cursor"
-	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/mikelo/gum/internal/exit"
+	"github.com/mikelo/gum/internal/stdin"
 )
 
 // Run provides a shell script interface for the text area bubble.

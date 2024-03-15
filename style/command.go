@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/mikelo/gum/internal/stdin"
 )
 
 // Run provides a shell script interface for the Lip Gloss styling.

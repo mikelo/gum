@@ -13,8 +13,8 @@ import (
 	"github.com/mattn/go-isatty"
 
 	"github.com/charmbracelet/gum/ansi"
-	"github.com/charmbracelet/gum/internal/exit"
-	"github.com/charmbracelet/gum/internal/stdin"
+	"github.com/mikelo/gum/internal/exit"
+	"github.com/mikelo/gum/internal/stdin"
 )
 
 var (

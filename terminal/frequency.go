@@ -4,36 +4,34 @@ import (
 	"sort"
 )
 
-// Pair represents a string-frequency pair.
-type Pair struct {
-	Str  string
-	Freq int
-}
-
-// Pairs is a slice of Pair.
-type Pairs []Pair
-
-// Len returns the length of the Pairs slice.
-func (p Pairs) Len() int { return len(p) }
-
-// Swap swaps the elements at indices i and j in the Pairs slice.
-func (p Pairs) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
-
-// Less returns true if the frequency of the element at index i is greater than the frequency of the element at index j in the Pairs slice.
-func (p Pairs) Less(i, j int) bool { return p[i].Freq > p[j].Freq }
-
-// SortByFrequency sorts the strings by their frequency in descending order.
-func SortByFrequency(strings []string) []Pair {
+// SortByFrequency sorts a slice of strings by their frequency and returns the sorted strings.
+func SortByFrequency(strings []string) []string {
+	// Count the frequency of each string
 	freqMap := make(map[string]int)
 	for _, s := range strings {
 		freqMap[s]++
 	}
 
-	pairs := make(Pairs, 0, len(freqMap))
+	// Convert the frequency map to pairs
+	type Pair struct {
+		Str  string
+		Freq int
+	}
+	pairs := make([]Pair, 0, len(freqMap))
 	for str, freq := range freqMap {
 		pairs = append(pairs, Pair{Str: str, Freq: freq})
 	}
 
-	sort.Sort(pairs)
-	return pairs
+	// Define custom sort for pairs based on frequency
+	sort.Slice(pairs, func(i, j int) bool {
+		return pairs[i].Freq > pairs[j].Freq
+	})
+
+	// Extract the sorted strings from pairs
+	sortedStrings := make([]string, len(pairs))
+	for i, pair := range pairs {
+		sortedStrings[i] = pair.Str
+	}
+
+	return sortedStrings
 }
